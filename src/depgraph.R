@@ -22,6 +22,7 @@ rm(list = ls())
 pkg.R <- dir("data/provR/R/", full.names = TRUE)
 sapply(pkg.R,source)
 
+### Getting the dependency information
 fw <- foodweb(plotting = F)
 ig <- graph_from_adjacency_matrix(fw$funmat)
 
@@ -51,49 +52,6 @@ plot(isgm.gnl, nodeAttrs = natt, attrs = list(node=list(shape="ellipse", fixedsi
 dev.off()
 
 pdf("results/dep_graphnel.pdf",width = 30, height = 30)
-ig.gnl <- igraph.to.graphNEL(ig)
-natt <- list(label = names(V(ig)))
-names(natt$label) <- nodes(ig.gnl)
-plot(ig.gnl, nodeAttrs = natt, attrs = list(node=list(shape="ellipse", fixedsize=FALSE)))
-dev.off()
-
-### RDT
-### Initialize
-rm(list = ls())
-pkg.R <- dir("~/Labs/HF/projects/e2ep/projects/RDataTracker/R", full.names = TRUE)
-sapply(pkg.R,source)
-fw <- foodweb(plotting = F)
-ig <- graph_from_adjacency_matrix(fw$funmat)
-
-
-## plots
-pdf("results/rdt_graph.pdf", width = 20, height = 20)
-plot(ig, vertex.size = 0.1, font = 2)
-dev.off()
-
-pdf("results/rdt_graphnel.pdf",width = 30, height = 30)
-ig.gnl <- igraph.to.graphNEL(ig)
-natt <- list(label = names(V(ig)))
-names(natt$label) <- nodes(ig.gnl)
-plot(ig.gnl, nodeAttrs = natt, attrs = list(node=list(shape="ellipse", fixedsize=FALSE)))
-dev.off()
-
-### recordr
-### Initialize
-rm(list = ls())
-pkg.R <- dir("~/Labs/HF/projects/e2ep/projects/recordr/R", full.names = TRUE)
-sapply(pkg.R,source)
-recordr <- ls()
-fw <- foodweb(recordr,plotting = F)
-ig <- graph_from_adjacency_matrix(fw$funmat)
-
-
-## plots
-pdf("results/rcordr_graph.pdf", width = 20, height = 20)
-plot(ig, vertex.size = 0.1, font = 2)
-dev.off()
-
-pdf("results/rcordr_graphnel.pdf",width = 30, height = 30)
 ig.gnl <- igraph.to.graphNEL(ig)
 natt <- list(label = names(V(ig)))
 names(natt$label) <- nodes(ig.gnl)

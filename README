@@ -1,0 +1,5 @@
+This repo was setup to obtain the graph of dependent functions for the
+provR package for collecting data provenance in R. 
+
+The code could be adapted for other packages fairly easily by altering
+src/depgraph.R lines 16, 17 and 22.
