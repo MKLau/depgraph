@@ -1,6 +1,11 @@
 ## The object main.spine is the complete set of 
 ## dependent functions for prov.capture 
 
+## The script clones the provR repository, analyzes the structure of
+## function dependecies and creates dependency network plots
+## Two directories are created, data (which accepts the cloned repo) and
+## results (which accepts the plots)
+
 ### Load the library
 libs <- c("mvbutils", "igraph", "Rgraphviz")
 for (l in (libs[!(libs %in% installed.packages()[,1])])){
@@ -40,6 +45,7 @@ all(sort(core) == sort(names(V(ig))[names(V(ig)) %in% core]))
 isg.main.spine <- induced_subgraph(ig,match(core,names(V(ig))))
 
 ## plots
+if (!dir.exists("results")){dir.create("results")}
 pdf("results/dep_graph.pdf", width = 20, height = 20)
 plot(isg.main.spine, vertex.size = 0.1, font = 2)
 dev.off()
