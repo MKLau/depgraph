@@ -81,7 +81,6 @@ if (any(options()$pkg == c("RDataTracker", "provR"))){
     }else{
         root <- ".json"
     }
-
     json.search <- bfs(ig, root = root, 
                        neimode = c('out'),
                        unreachable = FALSE)
